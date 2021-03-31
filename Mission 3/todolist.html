@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exhibition To-Do List</title>
+        <script>
+            function addItem() {
+                var newItem = document.createElement("div");
+                newItem.innerHTML = document.getElementById("newItem").value;
+                newItem.onclick = removeItem;
+                document.getElementById("list").appendChild(newItem);
+            }
+
+            function removeItem() {
+                document.getElementById("list").removeChild(this);
+            }
+
+            function save() {
+                var newItem = document.getElementById("list").value;
+                localStorage.list = newItem
+            }
+
+            function load() {
+
+            }
+        </script>
+
+    </head>
+    <body>
+        <p>Items you will need for the Exhibition to go ahead safely.</p>
+        <br>
+        <input type="text" id="newItem" value="Type item name here">
+        <input type="button" value="Add Item" onclick="addItem();"/>
+        <br>
+        <input type="button" id="save" value="Save">
+        <input type="button" id="load" value="Load">
+        <br>
+        <br>
+        <div>To-do List</div>
+        <div id="list"></div>
+    </body>
+</html>
