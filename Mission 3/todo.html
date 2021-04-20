@@ -1,46 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>To Do List</title>
-        <script>
-            function addItem() {
-                var newItem = document.createElement("div");
-                newItem.innerHTML = document.getElementById("inputBox").value;
-                newItem.onclick = removeItem;
-                document.getElementById("list").appendChild(newItem);
-                saveList();
-            }
-            function removeItem() {
-                document.getElementById("list").removeChild(this);
-                saveList();
-            }
-            function saveList() {
-                localStorage.storedList = document.getElementById("list").innerHTML;
-            }
-            function loadList() {
-                document.getElementById("list").innerHTML = localStorage.storedList;
-                for(var i = 0; i < list.children.length; i++) {
-                    list.children[i].onclick = removeItem;
-                }
-            }
-        </script>
-        <style>
 
-        </style>
-    </head>
-    <body>
-        <h1>The House of Volkov</h1>
-        <p></p>
-        <br>
-        <input type="text" id="inputBox" value="Type here to add items">
-        <br>
-        <input type="button" value="Add Item" onclick="addItem();">
-        <br>
-        <div id="list"></div>
-        <script>
-            if(localStorage.storedList) {
-                loadList();
+<head>
+    <title>To Do List</title>
+    <script>
+        function addItem() {
+            var newItem = document.createElement("div");
+            newItem.innerHTML = document.getElementById("inputBox").value;
+            newItem.onclick = removeItem;
+            document.getElementById("list").appendChild(newItem);
+            saveList();
+        }
+        function removeItem() {
+            document.getElementById("list").removeChild(this);
+            saveList();
+        }
+        function saveList() {
+            localStorage.storedList = document.getElementById("list").innerHTML;
+        }
+        function loadList() {
+            document.getElementById("list").innerHTML = localStorage.storedList;
+            for (var i = 0; i < list.children.length; i++) {
+                list.children[i].onclick = removeItem;
             }
-        </script>
-    </body>
+        }
+    </script>
+    <style>
+        body {
+            padding: 10px;
+            margin: 10px;
+            font-family:Arial, Helvetica, sans-serif
+        }
+
+        .pad {
+            padding: 20px;
+        }
+
+        .header {
+            background-color: lightblue;
+           
+            font-size: 32pt;
+            text-align: center;
+        }
+
+        .logo {
+            float: left;
+        }
+
+        .container {
+            background-color: lightgreen;
+            padding: 10px;
+            margin: 10px 0px 10px 0px;
+        }
+        .addItem {
+            background-color: plum;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div class="header pad">
+            <img class="logo" src="VolkovLogo.jpg" alt="Volkov Logo" float>
+            <p>The House of Volkov</p>
+        </div>
+        <div class="container">
+            <p>Special Exhibition To-Do List</p>
+            
+            <input type="text" id="inputBox" placeholder="Type here to add items">
+            <br>
+            <input class="addItem" type="button" value="Add Item" onclick="addItem();">
+            <br>
+            <div id="list" class="pad"></div>
+            <script>
+                if (localStorage.storedList) {
+                    loadList();
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
 </html>
